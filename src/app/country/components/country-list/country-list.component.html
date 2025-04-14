@@ -10,5 +10,65 @@
         <th>Populate</th>
       </tr>
     </thead>
+    <tbody>
+      @for (country of countries(); track country.cca2; let index = $index) {
+        <tr>
+          <td>{{ index + 1 }}</td>
+          <td>
+          <img
+            [src]=country.flagSvg
+            [alt]="country.name"
+            class="w-4"
+            >
+        </td>
+        <td>
+            <img
+              [src]=country.flagSvg
+              [alt]="country.name"
+              class="w-10"
+              >
+          </td>
+          <td>{{ country.name }}</td>
+          <td>{{ country.capital }}</td>
+          <td>
+            <span class="badge badge-secondary">{{ country.population | number }}</span>
+          </td>
+          <td>
+            <a href="" class="link-primary cursor-pointer" [routerLink]="['/country/by-code', country.cca2]" >
+              More info..
+            </a>
+          </td>
+        </tr>
+      }
+      <!--  -->
+      @if (errorMessage()) {
+        <tr>
+          <td colspan="8" class="text-center">
+            {{ errorMessage() }}
+          </td>
+        </tr>
+      }
+
+      <!--  -->
+      @if ( countries.length === 0 && !isLoading()) {
+        <tr>
+          <td colspan="8" class="text-center">
+            There are no results to show.
+          </td>
+        </tr>
+      }
+
+      <!--  -->
+      @if ( isLoading() ) {
+        <tr>
+          <td colspan="8" class="text-center">
+            <progress class="progress w-56"></progress>
+            <p>Searching..</p>
+
+          </td>
+        </tr>
+      }
+
+    </tbody>
   </table>
 </section>

@@ -1,0 +1,64 @@
+
+<section class="mx-10">
+  <h1 class="text-3xl">{{country().name}}</h1>
+  <h1 class="text-xl font-thin">Population: {{country().population | number}}</h1>
+
+
+  <div class="stats shadow">
+    <div class="stat">
+      <div class="stat-figure text-secondary">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          class="inline-block h-8 w-8 stroke-current">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+      <div class="stat-title">Population</div>
+      <div class="stat-value">{{country().population | number}}</div>
+      <div class="stat-desc">From {{currentYear()}}</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Name</div>
+      <div class="stat-value">{{country().name}}</div>
+      <div class="stat-desc">{{ country().region }} </div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Sub Regiones</div>
+      <div class="stat-value">{{ country().subRegion }}</div>
+      <div class="stat-desc">{{ country().region }}</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-title">Flag</div>
+      <div class="stat-value">  <img
+        class="w-10"
+        [alt]="country().name"
+        [src]="country().flagSvg" /></div>
+      <div class="stat-desc">{{ country().region }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-10 flex flex-col items-center justify-center m-auto w-100">
+  <figure class="diff aspect-16/9" tabindex="0">
+    <div class="diff-item-1" role="img" tabindex="0">
+      <img  [alt]="country().name"
+      [src]="country().flagSvg"  />
+    </div>
+    <div class="diff-item-2" role="img">
+      <img
+        class="blur brightness-75"
+        [alt]="country().name"
+        [src]="country().flagSvg" />
+    </div>
+    <div class="diff-resizer"></div>
+  </figure>
+</section>
