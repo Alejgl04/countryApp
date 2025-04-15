@@ -6,11 +6,13 @@
     [placeholder]="placeholder()"
     autofocus
     #txtSearch
-    (keyup.enter)="onSearch(txtSearch.value)"
+    (keyup.enter)="searchvalue.emit(txtSearch.value)"
+    (keyup)="inputValue.set(txtSearch.value)"
+    [value]="inputValue()"
   />
 
   <button
-    (click)="onSearch(txtSearch.value)"
+    (click)="searchvalue.emit(txtSearch.value)"
     class="btn btn-primary"
   >Submit</button>
 

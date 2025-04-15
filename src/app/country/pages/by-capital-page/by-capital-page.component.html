@@ -2,6 +2,7 @@
  <app-search-input
   placeholder="Search by capital"
   (searchvalue)="query.set($event)"
+  [initialValue]="query()"
  />
 
 <app-country-list
